@@ -22,3 +22,9 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+# fnisa-cypress-test
+
+# INFO
+- This Automation Test performs counter app master
+- run "npx cypress run" or "npx cypress open" in the cypress CLI to run the test
