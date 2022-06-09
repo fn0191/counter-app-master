@@ -102,7 +102,7 @@ describe('Test Counter App Master', () => {
 
     cy.wait(3000)
 
-    //remove zero1
+    //remove zero4
     cy
       .get(':nth-child(5) > .row > :nth-child(2) > .btn-danger > .fa')
       .click()
