@@ -6,12 +6,11 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    defaultCommandTimeout: 60000,
+    defaultCommandTimeout: 5000,
     slowTestThreshold: 3000,
     excludeSpecPattern: [
       "**/1-getting-started/*",
       "**/2-advanced-examples/*",
-      "**/mytest/*",
     ],
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
   },

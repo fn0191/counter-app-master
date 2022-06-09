@@ -8,98 +8,113 @@ describe('Test Counter App Master', () => {
 
   })
 
-  it.only('1.	Add all the items (Zero) in the card', () => {
-    //line 1
+  it('1.	Add all the items (Zero) in the card', () => {
+    //zero 1
     cy
       .get(':nth-child(2) > .row > :nth-child(2) > .btn-secondary > .fa')
       .dblclick()
-    //line 2
+    //zero 2
     cy
       .get(':nth-child(3) > .row > :nth-child(2) > .btn-secondary > .fa')
       .dblclick()
-    //line 3
+    //zero 3
     cy
       .get(':nth-child(4) > .row > :nth-child(2) > .btn-secondary > .fa')
       .dblclick()
-    //line 4
+    //zero 4
     cy
       .get(':nth-child(5) > .row > :nth-child(2) > .btn-secondary > .fa')
       .dblclick()
-     cy
-      .get('.navbar-brand > .badge').should('have.text', '4')
+
+    //cy.get('.navbar-brand > .badge').invoke('text').then(cy.log)
+    //cy.log('item is added successfully')
+
+    cy.get('.navbar-brand > .badge').should((val) => {
+      expect(val, 'all the items are added successfully').to.contain('8')
+
+    })
 
   })
 
+
+
   it('2.	Add item (Zero) in the cart and refresh', () => {
     //add item
+    //zero 1
+    cy
+      .get(':nth-child(2) > .row > :nth-child(2) > .btn-secondary > .fa')
+      .dblclick()
+    //zero 2
     cy
       .get(':nth-child(3) > .row > :nth-child(2) > .btn-secondary > .fa')
-      .click()
+      .dblclick()
+    //zero 3
     cy
-      .log('all the items are added successfully')
+      .get(':nth-child(4) > .row > :nth-child(2) > .btn-secondary > .fa')
+      .dblclick()
+    //zero 4
+    cy
+      .get(':nth-child(5) > .row > :nth-child(2) > .btn-secondary > .fa')
+      .dblclick()
+
     cy.wait(3000)
+
     //refresh
     cy.get('.btn-success')
       .click()
+
     //verify cart is empty 
-    cy.get('.navbar-brand > .badge')
-      .should('contain', '0');
+    cy.get('.navbar-brand > .badge').should((val) => {
+      expect(val, 'the cart has been empty').to.contain('0')
+
+    })
 
 
   })
 
   it('3. Delete any item and check if the count is reduced', () => {
     //increment
+    //zero 1
     cy
-      .get(':nth-child(2) > .row > :nth-child(2) > .btn-secondary > .fa')
-      .click()
-    cy
-      .get(':nth-child(3) > .row > :nth-child(2) > .btn-secondary > .fa')
-      .click()
-    cy
+    .get(':nth-child(2) > .row > :nth-child(2) > .btn-secondary > .fa')
+    .click()
 
-      .log('all the items are added successfully')
     cy.wait(3000)
-    //delete
-    cy
-      .get(':nth-child(2) > .row > :nth-child(2) > .btn-danger > .fa')
-      .click()
-    cy
-      .get('.navbar-brand > .badge')
-      .should('have.text', '1');
-    cy
 
-      .log('item is deleted successfully”')
+    //decrement
+    //zero1
+    cy.get(':nth-child(2) > .row > :nth-child(2) > .btn-info > .fa')
+      .click()()
+
+    //verify     
+    cy.get('.navbar-brand > .badge').should((val) => {
+      expect(val, 'all the items are deleted successfully').to.contain('0')
+    })
 
   })
 
   it('4.	Add any item in the cart and remove it', () => {
     //increment
+    //zero 4
     cy
-      .get(':nth-child(2) > .row > :nth-child(2) > .btn-secondary > .fa')
+      .get(':nth-child(5) > .row > :nth-child(2) > .btn-secondary > .fa')
       .click()
-    cy
-      .get(':nth-child(3) > .row > :nth-child(2) > .btn-secondary > .fa')
-      .click()
-    cy
-      .log('all the items are added successfully')
+
     cy.wait(3000)
 
-    //decrement
+    //remove zero1
     cy
-      .get(':nth-child(2) > .row > :nth-child(2) > .btn-info > .fa')
+      .get(':nth-child(5) > .row > :nth-child(2) > .btn-danger > .fa')
       .click()
-    cy
-      .get('.navbar-brand > .badge')
-      .should("contain", "1");
-    cy
-      .log('item is reduced successfully')
+
+    cy.get('.navbar-brand > .badge').should((val) => {
+      expect(val, 'item is removed successfully').to.contain('0')
+
+
+
+    })
+
+
   })
-
-
-
-
-
-
 
 })
