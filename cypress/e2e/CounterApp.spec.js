@@ -84,7 +84,7 @@ describe('Test Counter App Master', () => {
     //decrement
     //zero1
     cy.get(':nth-child(2) > .row > :nth-child(2) > .btn-info > .fa')
-      .click()()
+      .click()
 
     //verify     
     cy.get('.navbar-brand > .badge').should((val) => {
